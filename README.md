@@ -20,7 +20,7 @@ The goal is to understand worker perspectives on AI—their concerns, hopes, and
 ## Project Structure
 Repo/  
 ├── 01_hn_scraper.py # Scrape HackerNews discussions  
-├── 02_preprocessing_enhanced.py # Clean & prepare text data 
+├── 02_preprocessing_enhanced.py # Clean & prepare text data   
 ├── 03_sentiment_analysis.py # Analyze sentiment & extract themes  
 ├── 04_visualizations_enhanced.py # Generate insights visualizations  
 ├── data/  
