@@ -1,28 +1,28 @@
-# AI-and-Future-of-Work---Web-Scrapper-and-Sentiment-Analysis
+# AI-and-Future-of-Work---Web-Scraper-and-Sentiment-Analysis
 
 ## Overview
 
-This project analyzes **how workers perceive AI adoption** in their workplaces through sentiment analysis of 350+ real comments from HackerNews discussions. 
+This project analyzes **how workers perceive AI adoption** in their workplaces through sentiment analysis of real comments from HackerNews discussions. 
 
-The goal is to understand worker perspectives on AI—their concerns, hopes, and experiences—to inform research on **how AI is reshaping the nature and future of work**.
+The goal is to understand worker perspectives on AI, their concerns, hopes, and experiences to inform research on **how AI is reshaping the nature and future of work**.
 
 ---
 
 
 ## This project:
 
-- Captures authentic worker voices from online discussions
+- Captures genuine entries from online discussions that relate to the inputted AI and Work keywords  
 - Identifies key concerns (job security, fairness, upskilling needs)
 - Highlights what workers appreciate (productivity gains, learning opportunities)
 - Extracts themes and performs sentiment analysis
-- Provides actionable insights for organizations implementing AI
+- Provides actionable insightful visualizations
 
 ## Project Structure
 Repo/  
-├── 01_hn_scraper.py # Scrape HackerNews discussions  
-├── 02_preprocessing_enhanced.py # Clean & prepare text data   
-├── 03_sentiment_analysis.py # Analyze sentiment & extract themes  
-├── 04_visualizations_enhanced.py # Generate insights visualizations  
+├── 01_scraper.py _# Scrape HackerNews discussions_  
+├── 02_preprocessing.py _# Clean & formats the HTML syntaxed output from the scraper_   
+├── 03_sentiment_analysis.py _# Analyze sentiment & extract themes_  
+├── 04_visualizations_enhanced.py _# Generate insights visualizations_  
 ├── data/  
 │ ├── 01_raw_hackernews_comments.csv  
 │ ├── 02_cleaned_comments_final.csv  
