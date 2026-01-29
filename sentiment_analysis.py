@@ -14,14 +14,11 @@ print("=" * 70)
 print("SENTIMENT ANALYSIS & THEME EXTRACTION")
 print("=" * 70 + "\n")
 
-# Load cleaned data
+
 print("Loading cleaned data...")
 df = pd.read_csv('/kaggle/input/cleaned-final/02_cleaned_comments_final.csv')  #Edit the Input file path
 print(f"Starting with: {len(df)} comments\n")
 
-# ============================================================================
-# SENTIMENT ANALYSIS
-# ============================================================================
 print("=" * 70)
 print("STEP 1: SENTIMENT ANALYSIS")
 print("=" * 70 + "\n")
@@ -40,14 +37,14 @@ def get_sentiment(text):
     else:
         return 'Neutral'
 
-# Apply sentiment analysis
+
 df['sentiment'] = df['text_clean'].apply(get_sentiment)
 df['polarity_score'] = df['text_clean'].apply(lambda x: TextBlob(x).sentiment.polarity)
 df['subjectivity_score'] = df['text_clean'].apply(lambda x: TextBlob(x).sentiment.subjectivity)
 
 print("  Sentiment analysis complete\n")
 
-# Print sentiment distribution
+
 print("Sentiment Distribution:")
 print(df['sentiment'].value_counts())
 print(f"\nSentiment Percentages:")
@@ -55,16 +52,14 @@ print(df['sentiment'].value_counts(normalize=True) * 100)
 print(f"\nAverage polarity score: {df['polarity_score'].mean():.3f}")
 print(f"Average subjectivity score: {df['subjectivity_score'].mean():.3f}\n")
 
-# ============================================================================
-# THEME EXTRACTION (K-Means Clustering)
-# ============================================================================
+
 print("=" * 70)
 print("STEP 2: THEME EXTRACTION")
 print("=" * 70 + "\n")
 
 print("Extracting themes using TF-IDF + K-Means...")
 
-# Vectorize text
+
 vectorizer = TfidfVectorizer(
     max_features=100,
     stop_words='english',
@@ -73,12 +68,12 @@ vectorizer = TfidfVectorizer(
 )
 X = vectorizer.fit_transform(df['text_clean'])
 
-# Cluster into themes
+
 n_themes = 6
 kmeans = KMeans(n_clusters=n_themes, random_state=42, n_init=10)
 df['theme'] = kmeans.fit_predict(X)
 
-# Extract theme keywords
+
 terms = vectorizer.get_feature_names_out()
 order_centroids = kmeans.cluster_centers_.argsort()[:, ::-1]
 
@@ -95,15 +90,11 @@ df['theme_name'] = df['theme'].map(themes)
 
 print(f"\n  Theme extraction complete\n")
 
-# ============================================================================
-# SAVE ANALYZED DATA
-# ============================================================================
+
 df.to_csv('03_analyzed_comments.csv', index=False)
 print(f"  Saved analyzed data to: data/03_analyzed_comments.csv\n")
 
-# ============================================================================
-# STATISTICS
-# ============================================================================
+
 print("=" * 70)
 print("ANALYSIS STATISTICS")
 print("=" * 70 + "\n")
@@ -124,4 +115,5 @@ sentiment_by_theme = pd.crosstab(df['theme_name'], df['sentiment'])
 print(sentiment_by_theme)
 
 print("\n  Analysis complete! Ready for visualization.\n")
+
 
