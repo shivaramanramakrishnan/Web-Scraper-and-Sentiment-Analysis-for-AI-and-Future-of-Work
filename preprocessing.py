@@ -8,7 +8,7 @@ print("LOADING & CLEANING DATA")
 print("=" * 70 + "\n")
 
 print("Loading raw data...")
-df = pd.read_csv('/kaggle/working/data/01_raw_hackernews_comments.csv')
+df = pd.read_csv('/kaggle/working/data/01_raw_hackernews_comments.csv') ##Edit the file path
 print(f"Starting with: {len(df)} comments\n")
 
 
@@ -88,7 +88,7 @@ print(f"  After removing empty: {len(df)} comments\n")
 
 
 os.makedirs('data', exist_ok=True)
-output_file = 'data/02_cleaned_comments_final.csv'
+output_file = 'data/02_cleaned_comments_final.csv'  ##specify the O/P name
 df.to_csv(output_file, index=False)
 print(f"  Saved to: {output_file}")
 
@@ -122,3 +122,4 @@ print("  PREPROCESSING COMPLETE!")
 print("=" * 70)
 print("\nYour cleaned data is ready for sentiment analysis!")
 print(f"File: {output_file}")
+
